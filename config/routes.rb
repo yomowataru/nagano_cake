@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     get 'items/edit'
   end
   namespace :admin do
-    get 'homes/top'
+    # get 'homes/top'
+    root to: 'homes#top'
   end
   namespace :public do
     get 'orders/new'
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
   end
+  
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
