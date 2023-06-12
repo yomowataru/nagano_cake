@@ -31,21 +31,23 @@ Rails.application.routes.draw do
     get 'cart_items/destroy_all'
     get 'cart_items/create'
   end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  # namespace :public do
+    get 'customers/my_page' => 'public/customers#show'
+    get 'customers/information/edit' => 'public/customers#edit'
+    patch 'customers/onformation' => 'public/customers#update'
+    get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+    patch 'customers/withdraw' => 'public/customers#withdraw'
+  # end
+  
+  
+    # resources :items, only: [:index, :show] 
+    get '/items' => 'public/items#index', as: 'items'
+    get '/items/:id' => 'public/items#show', as: 'item'
+    
+    root to: 'public/homes#top'
+    
+    get '/about' => 'public/homes#about', as: 'about'
+  
   
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
