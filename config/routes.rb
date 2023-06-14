@@ -36,7 +36,10 @@ Rails.application.routes.draw do
     get 'customers/information/edit' => 'public/customers#edit'
     patch 'customers/information' => 'public/customers#update'
     get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+    # ↓ getルーティングも記述する必要があった
+    get 'customers/withdraw' => 'public/customers#withdraw'
     patch 'customers/withdraw' => 'public/customers#withdraw'
+    
   # end
   
   
