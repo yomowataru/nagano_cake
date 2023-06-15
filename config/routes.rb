@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :items 
+    # post '/items' => 'admin/items#index'
     
     # get 'items/index'
     # get 'items/new'
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
     get 'cart_items/destroy_all'
     get 'cart_items/create'
   end
+  
   # namespace :public do
     get 'customers/my_page' => 'public/customers#show'
     get 'customers/information/edit' => 'public/customers#edit'
@@ -41,20 +43,15 @@ Rails.application.routes.draw do
     # ↓ getルーティングも記述する必要があった
     get 'customers/withdraw' => 'public/customers#withdraw'
     patch 'customers/withdraw' => 'public/customers#withdraw'
-    
   # end
   
-  
-    # resources :items, only: [:index, :show] 
     get '/items' => 'public/items#index', as: 'items'
-    # postを作らないと、admin側に影響して更新
-    post '/items' => 'public/items#index'
+    # postを作らないと、admin側に影響して更新できない
+    # post '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show', as: 'item'
     
     root to: 'public/homes#top'
-    
     get '/about' => 'public/homes#about', as: 'about'
-  
   
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
