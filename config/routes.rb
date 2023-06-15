@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     get 'customers/edit'
   end
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    resources :items 
+    
+    # get 'items/index'
+    # get 'items/new'
+    # get 'items/show'
+    # get 'items/edit'
   end
   namespace :admin do
     # get 'homes/top'
@@ -45,6 +47,8 @@ Rails.application.routes.draw do
   
     # resources :items, only: [:index, :show] 
     get '/items' => 'public/items#index', as: 'items'
+    # postを作らないと、admin側に影響して更新
+    post '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show', as: 'item'
     
     root to: 'public/homes#top'
