@@ -16,7 +16,9 @@
     <tbody>
       <tr>
         <td><%= items.id %></td>
-        <td><%= items.name %></td>
+        <!--↓商品詳細ページへのリンクについて、(@item.id)と書きがちだが、
+          each do~で呼び出した段階で各商品のidも含まれているため、(items.id)-->
+        <td><%= link_to items.name, admin_item_path(items.id) %></td>
         <td><%= items.price %></td>
       </tr>
     </tbody>
