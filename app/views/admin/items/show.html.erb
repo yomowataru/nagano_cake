@@ -12,9 +12,10 @@
         税込価格<br>
         (税抜価格) 
         
-        <%= @item.add_tax_price.to_s(:dalimited) %>
+        <%= @item.add_tax_price %>
         (<%= @item.price %>)円
       </p>
+      <%= link_to "編集する", edit_admin_item_path(@item.id) %>
     </div>
   </div>
 </div>

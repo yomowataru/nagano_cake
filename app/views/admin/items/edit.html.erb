@@ -1,2 +1,26 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div>
+  <h2>商品編集</h2>
+</div>
+
+<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+<table>
+  <tr>
+    <td><label for="inputImage">商品画像</label></td>
+    <td><%= f.file_field :image, accept: "image/*" %></td>
+  </tr>
+  <tr>
+    <td><label for="inputName">商品名</label></td>
+    <td><%= f.text_field :name, autofocus: true, id:"inputName" %></td>
+  </tr>
+  <tr>
+    <td><label for="inputIntroduction">商品説明</label></td>
+    <td><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %></td>
+  </tr>
+  <tr>
+    <td><label for="inputPrice">税抜価格</label></td>
+    <td><%= f.text_field :price, autofocus: true, id:"inputPrice" %></td>
+  </tr>
+</table>
+  
+  <%= f.submit "変更を保存" %>
+<% end %>
