@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     get 'customers/edit'
   end
   namespace :admin do
-    resources :items 
+    resources :items
     # post '/items' => 'admin/items#index'
-    
+
     # get 'items/index'
     # get 'items/new'
     # get 'items/show'
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get 'cart_items/destroy_all'
     get 'cart_items/create'
   end
-  
+
   # namespace :public do
     get 'customers/my_page' => 'public/customers#show'
     get 'customers/information/edit' => 'public/customers#edit'
@@ -44,15 +44,15 @@ Rails.application.routes.draw do
     get 'customers/withdraw' => 'public/customers#withdraw'
     patch 'customers/withdraw' => 'public/customers#withdraw'
   # end
-  
+
     get '/items' => 'public/items#index', as: 'items'
     # postを作らないと、admin側に影響して更新できない
     # post '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show', as: 'item'
-    
+
     root to: 'public/homes#top'
     get '/about' => 'public/homes#about', as: 'about'
-  
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
