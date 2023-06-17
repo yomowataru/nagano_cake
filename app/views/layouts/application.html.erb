@@ -12,9 +12,10 @@
 
   <body>
     <header>
-      <%= link_to "LOGO", root_path %>
       
       <% if admin_signed_in? %>
+      <div>LOGO</div>
+      <ul>
         <li>
           <%= link_to "商品一覧", admin_items_path %>
         </li>
@@ -27,7 +28,11 @@
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :get %>
         </li>
+      </ul>
       <% elsif customer_signed_in? %>
+      <div><%= link_to "LOGO", root_path %></div>
+      
+      <ul>
         <li>
           <%= link_to "マイページ", customers_my_page_path %>
         </li>
@@ -40,7 +45,11 @@
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :get %>
         </li>
+      </ul>
       <% else %>
+      <div><%= link_to "LOGO", root_path %></div>
+      
+      <ul>
         <li>
           <%= link_to "About", about_path %>
         </li>
@@ -53,6 +62,7 @@
         <li>
           <%= link_to "ログイン", new_customer_session_path %>
         </li>
+      </ul>
       <% end %>
     </header>
     <%= yield %>

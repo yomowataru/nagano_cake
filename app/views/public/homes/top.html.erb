@@ -8,5 +8,19 @@
 </div>
 
 <div>
-  <h1>新着商品</h1>
+  <h2>新着商品</h2>
+  
+  <% @items.each do |items| %>
+
+  <div>
+    <div>
+      <%= image_tag items.get_image, size: "100x100" %>
+      <p><%= link_to items.name, item_path(items.id) %></p>
+      <p>￥<%= items.add_tax_price %></p>
+    </div>
+  </div>
+  
+  <% end %>
+  
+  <%= link_to "全ての商品を見る", items_path %>
 </div>
