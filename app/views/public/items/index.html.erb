@@ -1,2 +1,14 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<h2>商品一覧 (全 <%= @items_count %> 件)</h2>
+
+<% @items.each do |items| %>
+
+<div>
+  <div>
+    <%= image_tag items.get_image(100,100) %>
+    <p><%= link_to items.name, item_path(items.id) %></p>
+    <p>￥<%= items.add_tax_price %></p>
+  </div>
+</div>
+
+<% end %>
+<%= paginate @items %>

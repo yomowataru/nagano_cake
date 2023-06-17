@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   # end
 
     get '/items' => 'public/items#index', as: 'items'
-    # postを作らないと、admin側に影響して更新できない
+    # postを作らないと、admin側に影響して更新できない ※追記・formにurlを記述することで
     # post '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show', as: 'item'
 
