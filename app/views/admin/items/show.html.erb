@@ -3,7 +3,7 @@
 <div>
   <div>
     <div>
-      <%= image_tag @item.get_image(100,100) %> 
+      <%= image_tag @item.get_image, size: "100x100" %> 
     </div>
     <div>
       <p>商品名 <%= @item.name %></p>
