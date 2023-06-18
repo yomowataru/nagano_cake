@@ -7,12 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!--< ←このスペースでコメントアウト%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      
+
       <% if admin_signed_in? %>
       <div>LOGO</div>
       <ul>
@@ -31,7 +31,7 @@
       </ul>
       <% elsif customer_signed_in? %>
       <div><%= link_to "LOGO", root_path %></div>
-      
+
       <ul>
         <li>
           <%= link_to "マイページ", customers_my_page_path %>
@@ -48,7 +48,7 @@
       </ul>
       <% else %>
       <div><%= link_to "LOGO", root_path %></div>
-      
+
       <ul>
         <li>
           <%= link_to "About", about_path %>
