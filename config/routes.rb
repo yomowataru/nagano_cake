@@ -28,15 +28,22 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
   end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
+  
+  
+    # resources :cart_items, only: [:index, :update, :create, :destroy]
+    get    'cart_items' => 'public/cart_items#index'
+    post    'cart_items' => 'public/cart_items#create'
+    patch    'cart_items/:id' => 'public/cart_items#update'
+    delete    'cart_items/:id' => 'public/cart_items#destroy'
+    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all' 
+    # get 'cart_items/index'
+    # get 'cart_items/update'
+    # get 'cart_items/destroy'
+    # get 'cart_items/destroy_all'
+    # get 'cart_items/create'
+  
 
-  # namespace :public do
+  
     get 'customers/my_page' => 'public/customers#show'
     get 'customers/information/edit' => 'public/customers#edit'
     patch 'customers/information' => 'public/customers#update'
@@ -44,7 +51,7 @@ Rails.application.routes.draw do
     # ↓ getルーティングも記述する必要があった
     get 'customers/withdraw' => 'public/customers#withdraw'
     patch 'customers/withdraw' => 'public/customers#withdraw'
-  # end
+  
 
     get '/items' => 'public/items#index', as: 'items'
     # postを作らないと、admin側に影響して更新できない ※追記・formにurlを記述することで
