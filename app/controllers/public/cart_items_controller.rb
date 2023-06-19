@@ -10,10 +10,13 @@ class Public::CartItemsController < ApplicationController
   def destroy
     cart_item = current_customer.cart_items.find(params[:id])
     cart_item.destroy
-    redirect_to root_path 
+    redirect_to cart_items_path
   end
 
   def destroy_all
+    cart_items = current_customer.cart_items.all
+    cart_items.destroy_all 
+    redirect_to cart_items_path 
   end
 
   def create

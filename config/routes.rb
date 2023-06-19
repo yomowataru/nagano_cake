@@ -31,20 +31,20 @@ Rails.application.routes.draw do
   
   
   scope module: :public do
+    # 【destroy_all】アクションを実行したら、【destroy】が実行されていた
+    # 1.rails routesで表示されたURLは、上から順に読み込まれる。
+    # 2.xxx/:idの部分は、数字(/1など)ではなく文字(/destroy_all)も呼び出される。
+    # 3.↓の部分で、/destroy_allを下に記述すると、destroyの/cart_item/:idが先に
+    #   読まれてしまったため、エラーとなった。
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all' 
     resources :cart_items, only: [:index, :update, :create, :destroy]
-    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all' 
+    
   end
     # resources :cart_items, only: [:index, :update, :create, :destroy]
     # get    'cart_items' => 'public/cart_items#index'
     # post    'cart_items' => 'public/cart_items#create'
     # patch    'cart_items/:id' => 'public/cart_items#update'
     # delete    'cart_items/:id' => 'public/cart_items#destroy'
-     
-    # get 'cart_items/index'
-    # get 'cart_items/update'
-    # get 'cart_items/destroy'
-    # get 'cart_items/destroy_all'
-    # get 'cart_items/create'
   
 
   
@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   
 
     get '/items' => 'public/items#index', as: 'items'
-    # postを作らないと、admin側に影響して更新できない ※追記・formにurlを記述することで
+    # postを作らないと、admin側に影響して更新できない ※追記・formにurlを記述
     # post '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show', as: 'item'
 
