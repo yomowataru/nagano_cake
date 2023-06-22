@@ -21,12 +21,12 @@ Rails.application.routes.draw do
     # get 'homes/top'
     root to: 'homes#top'
   end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/comfirm'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
+  
+  scope module: :public do
+    
+    post 'orders/comfirm' => 'orders#comfirm'
+    get 'orders/complete' => 'orders#complete'
+    resources :orders, only: [:new, :create, :index, :show]
   end
   
   

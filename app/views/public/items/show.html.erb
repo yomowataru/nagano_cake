@@ -5,11 +5,11 @@
   <div>
      <p><%= @item.name %></p>
      <p><%= @item.introduction %></p>
-     
+
      <p></p>
      <p>￥<%= @item.add_tax_price %>(税込)</p>
   </div>
-  
+
   <!--@cart_item変数は、itemコントローラーのshowアクションに定義-->
   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
     <%= f.label :amount, "個数選択" %>
