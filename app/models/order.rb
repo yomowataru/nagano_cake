@@ -5,5 +5,8 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
   belongs_to :customer
   
+  def  add_tax_price
+    (item.price * 1.10).floor
+  end
   
 end
