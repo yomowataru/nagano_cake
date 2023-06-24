@@ -61,6 +61,12 @@ class Public::OrdersController < ApplicationController
     
   end
   
+  # def destroy
+    # order = current_customer.orders.find(params[:id])
+    # order.destroy
+    # redirect_to orders_path
+  # end
+  
   private
     def order_params
         params.require(:order).permit(:postal_code, :payment_method, :name, :address, :shipping_cost , :customer_id, :total_payment)

@@ -10,4 +10,9 @@ class OrderDetail < ApplicationRecord
   def subtotal
     self.add_tax_price * amount
   end
+  
+  def amounts
+    
+    
+  end
 end

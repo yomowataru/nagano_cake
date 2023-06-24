@@ -2,7 +2,7 @@
 
 <%= link_to "+", new_admin_item_path %>
 
-<% @items.each do |items| %>
+
 
 <div>
   <table>
@@ -13,6 +13,7 @@
         <th>税抜価格</th>
       </tr>
     </thead>
+    <% @items.each do |items| %>
     <tbody>
       <tr>
         <td><%= items.id %></td>
@@ -22,7 +23,8 @@
         <td><%= items.price %></td>
       </tr>
     </tbody>
+    <% end %>
   </table>
 </div>
-<% end %>
+
 <%= paginate @items %>
