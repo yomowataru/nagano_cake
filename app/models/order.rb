@@ -9,4 +9,12 @@ class Order < ApplicationRecord
     (item.price * 1.10).floor
   end
   
+  def full_name
+    customer.last_name + ' ' + customer.first_name
+  end
+  
+  def subtotal
+    self.add_tax_price * amount
+  end
+  
 end
