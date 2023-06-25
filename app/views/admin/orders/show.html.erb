@@ -47,9 +47,9 @@
           <% @order_detail.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.price %></td>
+            <td><%= number_to_currency(order_detail.price) %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= order_detail.subtotal %></td>
+            <td><%= number_to_currency(order_detail.subtotal) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -64,7 +64,7 @@
       <table>
         <tr>
           <th>商品合計</th>
-          <td><%= @total %></td>
+          <td><%= number_to_currency(@total) %></td>
         </tr>
         <tr>
           <th>送料</th>
@@ -74,7 +74,7 @@
         </tr>
         <tr>
           <th>請求金額</th>
-          <td><%= @order.total_payment %></td>
+          <td><%= number_to_currency(@order.total_payment) %></td>
         </tr>
       </table>
     </div>

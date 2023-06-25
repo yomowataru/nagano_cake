@@ -16,7 +16,7 @@
     <div>
       <%= image_tag items.get_image, size: "100x100" %>
       <p><%= link_to items.name, item_path(items.id) %></p>
-      <p>￥<%= items.add_tax_price %></p>
+      <p>￥<%= number_to_currency(items.add_tax_price) %></p>
     </div>
   </div>
   

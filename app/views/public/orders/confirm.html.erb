@@ -17,9 +17,9 @@
         <% @cart_items.each do |cart_items| %>
         <tr>
           <td><%= cart_items.item.name %></td>
-          <td><%= cart_items.item.add_tax_price %></td>
+          <td><%= number_to_currency(cart_items.item.add_tax_price) %></td>
           <td><%= cart_items.amount %></td>
-          <td><%= cart_items.subtotal %></td>
+          <td><%= number_to_currency(cart_items.subtotal) %></td>
               <% @total += cart_items.subtotal %>
         </tr>
         <% end %>
@@ -34,12 +34,12 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%= @total %></td>
+          <td><%= number_to_currency(@total) %></td>
         </tr>
         <tr>
           <th>請求金額</th>
           <% @order.total_payment = @order.shipping_cost + @total %>
-          <td><%= @order.total_payment %></td>
+          <td><%= number_to_currency(@order.total_payment) %></td>
         </tr>
         <tr>
           <th>支払方法</th>
