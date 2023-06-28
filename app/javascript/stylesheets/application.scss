@@ -1,2 +1,12 @@
 
 @use '~bootstrap/scss/bootstrap';
+
+.pagination {
+  justify-content: center;
+  
+}
+
+.pagination span {
+  margin-left: 2px; 
+}
+
