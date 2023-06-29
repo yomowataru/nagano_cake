@@ -1,28 +1,40 @@
-<div>
-  <div>
-    <h2>注文履歴一覧</h2>
+<div class="container">
+  <div class="row m-2">
+    <div class="col-lg-6">
+      <h4>注文履歴一覧</h4>
+    </div>
   </div>
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>購入日時</th>
-          <th>購入者</th>
-          <th>注文個数</th>
-        </tr>
-      </thead>
+  
+  <div class="row">
+    <div class="col-lg-10 text-left">
+      <table class="table table-borderless">
+        <thead class="table-secondary">
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th></th>
+          </tr>
+        </thead>
+  
+        <% @orders.each do |orders| %>
+        <tbody>
+          <tr>
+            <td><%= link_to orders.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(orders.id) %></td>
+            <td><%= orders.customer.last_name %><%= orders.customer.first_name %></td>
+            <td><%= orders.order_details.sum(:amount) %></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <% end %>
+    </table>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <%= paginate @orders %>
+    </div>
+  </div>
 
-      <% @orders.each do |orders| %>
-      <tbody>
-        <tr>
-          <td><%= link_to orders.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(orders.id) %></td>
-          <td><%= orders.customer.last_name %><%= orders.customer.first_name %></td>
-          <td><%= orders.order_details.sum(:amount) %></td>
-        </tr>
-      </tbody>
-      <% end %>
-  </table>
-  </div>
 </div>
-
-<%= paginate @orders %>

@@ -1,13 +1,13 @@
-<div>
-  <div>
-    <div>
-      <h2>注文履歴詳細</h2>
+<div class="container">
+  <div class="row m-2">
+    <div class="col-lg-6">
+      <h4>注文履歴詳細</h4>
     </div>
   </div>
 
-  <div>
-    <div>
-      <table>
+  <div class="row mt-2">
+    <div class="col-lg-4 text-left">
+      <table class="table table-borderless">
         <tr>
           <th>購入者</th>
           <td><%= @order.customer.full_name %></td>
@@ -32,10 +32,10 @@
     </div>
   </div>
 
-  <div>
-    <div>
-      <table>
-        <thead>
+  <div class="row mt-2">
+    <div class="col-lg-6 text-left">
+      <table class="table table-borderless">
+        <thead class="table-secondary">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -56,7 +56,7 @@
       </table>
     </div>
 
-    <div>
+    <div class="col-lg-2 d-flex justify-content-end">
       <% @order_detail.each do |order_detail| %>
           <% order_detail.subtotal %>
           <% @total += order_detail.subtotal %>
@@ -64,17 +64,17 @@
       <table>
         <tr>
           <th>商品合計</th>
-          <td><%= number_to_currency(@total) %></td>
+          <td class="text-right">&emsp;<%= number_to_currency(@total) %>円</td>
         </tr>
         <tr>
           <th>送料</th>
-          <td>
-            <%= @order.shipping_cost %>
+          <td class="text-right">
+            &emsp;<%= @order.shipping_cost %>円
           </td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td><%= number_to_currency(@order.total_payment) %></td>
+          <td class="text-right">&emsp;<%= number_to_currency(@order.total_payment) %>円</td>
         </tr>
       </table>
     </div>
