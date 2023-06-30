@@ -1,20 +1,32 @@
-<div>
-  <div>
-    <%= image_tag @item.get_image, size: "200x200" %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg-3 text-left m-3">
+      <%= image_tag @item.get_image, size: "200x200" %>
+    </div>
+    <div class="col-lg-5 text-left m-3 ">
+       <h3><%= @item.name %></h3>
+       <h4 class="mt-3"><%= @item.introduction %></h4>
+  
+       <div class="d-flex flex-row align-items-end mt-5 ">
+         <h4 class="mb-0">￥<%= number_to_currency(@item.add_tax_price) %></h4>
+         <span>(税込)</span>
+       </div>
+       
+       
+        <!--@cart_item変数は、itemコントローラーのshowアクションに定義-->
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+        <div class="mt-5 d-flex flex-row align-items-end ">
+          <div>
+            <%= f.label :amount, "個数選択" %>
+            <%= f.select  :amount, *[1..10] %>
+          </div>
+          <div class="ml-5">
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+          </div>
+        </div>  
+        <% end %>
+       
+    </div>
   </div>
-  <div>
-     <p><%= @item.name %></p>
-     <p><%= @item.introduction %></p>
-
-     <p></p>
-     <p>￥<%= number_to_currency(@item.add_tax_price) %>(税込)</p>
-  </div>
-
-  <!--@cart_item変数は、itemコントローラーのshowアクションに定義-->
-  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-    <%= f.label :amount, "個数選択" %>
-    <%= f.select  :amount, *[1..10] %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
 </div>

@@ -1,14 +1,20 @@
-<h2>商品一覧 (全 <%= @items_count %> 件)</h2>
-
-<% @items.each do |items| %>
-
-<div>
-  <div>
-    <%= image_tag items.get_image, size: "100x100" %>
-    <p><%= link_to items.name, item_path(items.id) %></p>
-    <p>￥<%= number_to_currency(items.add_tax_price) %></p>
+<div class="container">
+  <div class="row m-5">
+    <h4>商品一覧 (全 <%= @items_count %> 件)</h4>
   </div>
+    
+  <div class="row m-5 justify-content-center d-flex flex-wrap">
+    <% @items.each do |items| %>
+    
+    <div class="w-25">
+      
+        <%= image_tag items.get_image, size: "200x200" %>
+        <p><%= link_to items.name, item_path(items.id) %></p>
+        <p>￥<%= number_to_currency(items.add_tax_price) %></p>
+      
+    </div>
+    
+    <% end %>
+  </div>
+    <%= paginate @items %>
 </div>
-
-<% end %>
-<%= paginate @items %>

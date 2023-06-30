@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page]) 
+    @items = Item.page(params[:page]).per(10)
     # 全件数を数えるため、allメソッドを定義する
     items_all = Item.all
     @items_count = items_all.count
