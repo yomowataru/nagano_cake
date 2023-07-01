@@ -1,37 +1,45 @@
-<div>
-  <h2>会員情報編集</h2>
-</div>
-
-<%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
-<table>
-  <tr>
-    <td><label for="inputName">氏名</label></td>
-    <td><%= f.text_field :last_name, autofocus: true, id:"inputName" %></td>
-    <td><%= f.text_field :first_name, autofocus: true, id:"inputName" %></td>
-  </tr>
-  <tr>
-    <td><label for="inputKana">カナ</label></td>
-    <td><%= f.text_field :last_name_kana, autofocus: true, id:"inputKana" %></td>
-    <td><%= f.text_field :first_name_kana, autofocus: true, id:"inputKana" %></td>
-  </tr>
-  <tr>
-    <td><label for="inputPostal">郵便番号</label></td>
-    <td><%= f.text_field :postal_code, autofocus: true, id:"inputPostal" %></td>
-  </tr>
-  <tr>
-    <td><label for="inputAddress">住所</label></td>
-    <td><%= f.text_field :address, autofocus: true, id:"inputAddress" %></td>
-  </tr>
-  <tr>
-    <td><label for="inputTelephone">電話番号</label></td>
-    <td><%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone" %></td>
-  </tr>
-  <tr>
-    <td><label for="inputEmail">メールアドレス</label></td>
-    <td><%= f.text_field :email, autofocus: true, id:"inputEmail" %></td>
-  </tr>
-</table>
+<div class="container mt-3">
+  <div class="row">
+    <h4>会員情報編集</h4>
+  </div>
   
-  <%= f.submit "編集内容を保存" %>
-  <%= link_to "退会する", customers_unsubscribe_path %>
-<% end %>
+  <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+  <div class="row">
+    <div class="col-lg-7 text-left">
+      <table class="table table-borderless">
+        <tr>
+          <td><label for="inputName">氏名</label></td>
+          <td><%= f.text_field :last_name, autofocus: true, id:"inputName" %></td>
+          <td><%= f.text_field :first_name, autofocus: true, id:"inputName" %></td>
+        </tr>
+        <tr>
+          <td><label for="inputKana">カナ</label></td>
+          <td><%= f.text_field :last_name_kana, autofocus: true, id:"inputKana" %></td>
+          <td><%= f.text_field :first_name_kana, autofocus: true, id:"inputKana" %></td>
+        </tr>
+        <tr>
+          <td><label for="inputPostal">郵便番号</label></td>
+          <td><%= f.text_field :postal_code, autofocus: true, id:"inputPostal" %></td>
+        </tr>
+        <tr>
+          <td><label for="inputAddress">住所</label></td>
+          <td><%= f.text_field :address, autofocus: true, id:"inputAddress" %></td>
+        </tr>
+        <tr>
+          <td><label for="inputTelephone">電話番号</label></td>
+          <td><%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone" %></td>
+        </tr>
+        <tr>
+          <td><label for="inputEmail">メールアドレス</label></td>
+          <td><%= f.text_field :email, autofocus: true, id:"inputEmail" %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit "編集内容を保存", class: 'btn btn-success' %></td>
+          <td><%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger' %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <% end %>
+</div>

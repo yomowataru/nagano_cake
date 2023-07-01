@@ -1,61 +1,47 @@
-<div>
-  <h2>マイページ</h2>
-</div>
+<div class="container">
+  <div class="row m-5">
+    <h4>マイページ</h4>
+  </div>
+  
+  <div class="row">
+    <h5 class="row mx-3">登録情報</h5>
+    <p><%= link_to "編集する", customers_information_edit_path, class: 'btn btn-success' %></p>
+  </div>
 
-<div>
-  <table>
-    <tr>
-      <td>登録情報</td>
-      <td><%= link_to "編集する", customers_information_edit_path %></td>
-    </tr>
-  </table>
-</div>
+  <div class="row">
+    <div class="col-lg-6">
+      <table class="table table-bordered ">
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-<div>
-  <table>
-    <tr>
-      <td>氏名</td>
-      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
-    </tr>
-    <tr>
-      <td>カナ</td>
-      <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
-    </tr>
-    <tr>
-      <td>郵便番号</td>
-      <td><%= @customer.postal_code %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= @customer.address %></td>
-    </tr>
-    <tr>
-      <td>電話番号</td>
-      <td><%= @customer.telephone_number %></td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= @customer.email %></td>
-    </tr>
-  </table>
-</div>
-
-<!--<div>
-  <table>
-    <tr>
-      <td>配送先</td>
-      <td>< %= link_to "一覧を見る", customers_information_edit_path %></td>
-    </tr>
-  </table>
-</div>-->
-
-<div>
-  <table>
-    <tr>
-      <td>注文履歴</td>
-      <!--注文履歴画面作成後にリンク修正！！-->
-      <td><%= link_to "一覧を見る", orders_path %></td>
-    </tr>
-  </table>
+  <div class="row">
+    <h5 class="row mx-3">注文履歴</h5>
+    <p><%= link_to "一覧を見る", orders_path, class: 'btn btn-primary' %></p>
+  </div>
 </div>
 

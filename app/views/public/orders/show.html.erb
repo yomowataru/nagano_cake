@@ -1,14 +1,14 @@
-<div>
-  <div>
-    <h2>
+<div class="container">
+  <div class="row m-5">
+    <h4>
       注文履歴詳細
-    </h2>
+    </h4>
   </div>
   
-  <div>
-    <div>
-      <h4>注文情報</h4>
-      <table>
+  <div class="row">
+    <div class="col-lg-6">
+      <h5>注文情報</h5>
+      <table class="table table-bordered ">
         <tr>
           <th>注文日</th>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
@@ -28,13 +28,13 @@
       </table>
     </div>
     
-    <div>
-      <h4>請求情報</h4>
+    <div class="col-lg-6">
+      <h5>請求情報</h5>
       <% @order_detail.each do |order_detail| %>
           <% order_detail.subtotal %>
           <% @total += order_detail.subtotal %>
       <% end %> 
-      <table>
+      <table class="table table-bordered ">
         <tr>
           <th>商品合計</th>
           <td><%= number_to_currency(@total) %></td>
@@ -51,11 +51,12 @@
         </tr>
       </table>
     </div>
+  </div>
   
     <div>
       <div>
         <h4>注文内容</h4>
-        <table>
+        <table class="table table-bordered ">
           <thead>
             <tr>
               <th>商品</th>

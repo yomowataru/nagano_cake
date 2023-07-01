@@ -23,7 +23,6 @@
             <td><%= link_to orders.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(orders.id) %></td>
             <td><%= orders.customer.last_name %><%= orders.customer.first_name %></td>
             <td><%= orders.order_details.sum(:amount) %></td>
-            <td></td>
           </tr>
         </tbody>
         <% end %>
