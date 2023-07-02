@@ -7,8 +7,9 @@
     <% @items.each do |items| %>
     
     <div class="w-25">
-      
-        <%= image_tag items.get_image, size: "200x200" %>
+        <%= link_to item_path(items.id) do %>
+          <%= image_tag items.get_image, size: "200x200" %>
+        <% end %>
         <p><%= link_to items.name, item_path(items.id) %></p>
         <p>￥<%= number_to_currency(items.add_tax_price) %></p>
       
