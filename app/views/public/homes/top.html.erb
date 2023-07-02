@@ -18,7 +18,9 @@
   <div class="row m-5 justify-content-center">
     <% @items.each do |items| %>
       <div class="ml-5">
-        <%= image_tag items.get_image, size: "100x100" %>
+        <%= link_to item_path(items.id) do %>
+          <%= image_tag items.get_image, size: "100x100" %>
+        <% end %> 
         <p><%= link_to items.name, item_path(items.id) %></p>
         <p>￥<%= number_to_currency(items.add_tax_price) %></p>
       </div>
